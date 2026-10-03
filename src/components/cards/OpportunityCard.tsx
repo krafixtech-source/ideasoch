@@ -7,6 +7,16 @@ interface OpportunityCardProps {
   opportunity: Opportunity;
 }
 
+const OPPORTUNITY_IMAGES: Record<string, string> = {
+  'Co-founder': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80',
+  'Job': 'https://images.unsplash.com/photo-1497032205916-ac533900bbdb?auto=format&fit=crop&w=400&q=80',
+  'Partnership': 'https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&w=400&q=80',
+  'Investment': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80',
+  'Consulting': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=400&q=80',
+  'Internship': 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80',
+  'Acquisition': 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80',
+};
+
 export const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
   const getTypeBadgeStyle = (type: string) => {
     switch (type) {
@@ -22,9 +32,17 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity })
   };
 
   return (
-    <div className="bg-[#f5f0e5] border border-[#84B3CE]/35 rounded-lg p-5 flex flex-col justify-between hover:border-[#16587B] hover:shadow-sm transition-all duration-150">
-      <div>
-        {/* Top: Type Badge & Location */}
+    <div className="group bg-[#f5f0e5] border border-[#84B3CE]/35 rounded-lg overflow-hidden flex flex-col justify-between hover:border-[#16587B] hover:shadow-sm transition-all duration-150">
+      <div className="h-28 overflow-hidden relative">
+        <img 
+          src={OPPORTUNITY_IMAGES[opportunity.type] || 'https://images.unsplash.com/photo-1497032205916-ac533900bbdb?auto=format&fit=crop&w=400&q=80'} 
+          alt={opportunity.type}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+      <div className="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          {/* Top: Type Badge & Location */}
         <div className="flex items-center justify-between mb-3">
           <span
             className={`px-2 py-0.5 text-[11px] uppercase tracking-wide border rounded ${getTypeBadgeStyle(
@@ -78,6 +96,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity })
           <span>View Opportunity</span>
           <ArrowRight className="w-3 h-3" />
         </Link>
+      </div>
       </div>
     </div>
   );

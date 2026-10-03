@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   SlidersHorizontal,
   FileText,
+  MessageSquare,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -57,163 +58,182 @@ export default function HomePage() {
   return (
     <div className="bg-[#fcfaf5]">
       {/* ==================================================
-          SECTION 1 — HERO
+          SECTION 1 — HERO (PALE BACKGROUND & ARCHITECTURE CARD)
           ================================================== */}
-      <section className="border-b border-[#84B3CE]/30 bg-[#fcfaf5] pt-16 pb-20 sm:pt-24 sm:pb-28">
+      <section className="pt-28 pb-36 sm:pt-36 sm:pb-44 lg:pt-40 lg:pb-48 border-b border-[#84B3CE]/30 bg-[#fcfaf5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Column: Copy & CTAs */}
-            <div className="lg:col-span-7 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded border border-[#84B3CE]/40 bg-[#f5f0e5] text-xs text-[#16587B] mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#5B0015]"></span>
-                <span className="font-medium">Neutral Direct Mediator · 0% Equity · 0% Commission</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            {/* Left Column: Hero Content & CTAs */}
+            <div className="lg:col-span-7 flex flex-col items-start">
+              
+              {/* Neutral Mediator Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#D6CFBE] bg-[#EAE4D8] mb-6 text-xs text-[#595349] font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#5B0015]"></span>
+                <span>Neutral Direct Mediator · 0% Equity · 0% Commission</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-[#16587B] tracking-tight leading-[1.12] mb-6">
-                Where Ideas Meet Opportunity.
+              {/* Main Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-semibold text-[#16587B] tracking-tight leading-[1.15] mb-6">
+                Where Ideas Meet<br />Opportunity.
               </h1>
 
-              <p className="text-base sm:text-lg text-[#16587B]/75 leading-relaxed mb-6 font-normal">
+              {/* Subtitle Paragraph */}
+              <p className="text-sm sm:text-base text-[#16587B]/80 leading-relaxed mb-8 max-w-xl font-normal">
                 Ideasoch is the neutral mediator connecting founders with accredited investors. Pitch unlimited investors with 2 active ideas for free, or discover vetted ventures through short thesis headlines and direct bilateral chat.
               </p>
 
-              {/* Feature highlight badges */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                <span className="px-2.5 py-1 text-[11px] font-medium rounded border border-[#84B3CE]/40 bg-[#f5f0e5] text-[#16587B]">
-                  ✓ 2 Active Ideas Free
-                </span>
-                <span className="px-2.5 py-1 text-[11px] font-medium rounded border border-[#84B3CE]/40 bg-[#f5f0e5] text-[#16587B]">
-                  ✓ Endless Investor Reach
-                </span>
-                <span className="px-2.5 py-1 text-[11px] font-medium rounded border border-[#84B3CE]/40 bg-[#f5f0e5] text-[#16587B]">
-                  ✓ 2 File Deck Limit (.pdf/.ppt)
-                </span>
-                <span className="px-2.5 py-1 text-[11px] font-medium rounded border border-[#5B0015]/30 bg-[#5B0015]/10 text-[#5B0015]">
-                  ✓ 24h Security Verified Backers
-                </span>
+              {/* Feature Badges */}
+              <div className="flex flex-wrap gap-2.5 mb-8">
+                <div className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded border border-[#D6CFBE] bg-[#EAE4D8] text-[#16587B]">
+                  <span className="text-[#16587B] font-semibold">✓</span>
+                  <span>2 Active Ideas Free</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded border border-[#D6CFBE] bg-[#EAE4D8] text-[#16587B]">
+                  <span className="text-[#16587B] font-semibold">✓</span>
+                  <span>Endless Investor Reach</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded border border-[#D6CFBE] bg-[#EAE4D8] text-[#16587B]">
+                  <span className="text-[#16587B] font-semibold">✓</span>
+                  <span>2 File Deck Limit (.pdf/.ppt)</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded border border-[#E5C4C4] bg-[#F3E2E2] text-[#5B0015] font-medium">
+                  <span className="text-[#5B0015] font-semibold">✓</span>
+                  <span>24h Security Verified Backers</span>
+                </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-3">
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-4">
                 <button
                   type="button"
-                  onClick={() => handleOpenAuth('login', 'IDEA_MAKER', '/submit-idea', 'Sign in to Submit Your Idea (Free)', 'Founders receive 2 active idea slots free with endless investor reach.')}
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium bg-[#5B0015] text-[#fcfaf5] rounded-md hover:bg-[#43000f] shadow-sm border border-[#5B0015] transition-colors cursor-pointer"
+                  onClick={() => handleOpenAuth('signup', 'IDEA_MAKER', '/submit-idea', 'Submit Your Idea', 'Create your account to present your idea to verified investors.')}
+                  className="px-6 py-3 bg-[#5B0015] text-white font-semibold text-sm rounded-md hover:bg-[#43000f] transition-colors shadow-sm text-center cursor-pointer"
                 >
                   Submit Your Idea (Free)
                 </button>
-                <button
-                  type="button"
-                  onClick={() => handleOpenAuth('login', 'INVESTOR', '/ideas', 'Sign in to Explore Ideas & Backers', 'Verified investors receive 5 bilateral chats to connect with founders directly.')}
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium border border-[#16587B]/30 text-[#16587B] bg-[#f5f0e5] rounded-md hover:bg-[#ede6d8] transition-colors cursor-pointer"
+                <Link
+                  href="/ideas"
+                  className="px-6 py-3 bg-[#F0ECE1] border border-[#D6CFBE] text-[#16587B] font-medium text-sm rounded-md hover:bg-[#ede6d8] transition-colors text-center"
                 >
                   Explore Ideas &amp; Backers
-                </button>
+                </Link>
               </div>
 
-              {/* Direct Quick Login / Sign Up options */}
-              <div className="flex items-center gap-2 text-xs text-[#16587B]/75 mb-12">
-                <span>Already have an account?</span>
+              {/* Account text */}
+              <div className="text-xs text-[#16587B]/70 mb-12">
+                Already have an account?{' '}
                 <button
                   type="button"
-                  onClick={() => handleOpenAuth('login', 'IDEA_MAKER', '/dashboard/founder', 'Sign in to Ideasoch', 'Sign in with demo founder (founder@ideasoch.com) or investor credentials.')}
+                  onClick={() => handleOpenAuth('login', 'IDEA_MAKER', '/dashboard')}
                   className="font-semibold text-[#5B0015] hover:underline cursor-pointer"
                 >
                   Log In
                 </button>
-                <span>·</span>
-                <span>New here?</span>
+                {' '}· New here?{' '}
                 <button
                   type="button"
-                  onClick={() => handleOpenAuth('signup', 'IDEA_MAKER', '/submit-idea', 'Join Ideasoch as Founder or Investor', 'Create your account to submit ideas or back high-conviction ventures.')}
+                  onClick={() => handleOpenAuth('signup', 'IDEA_MAKER', '/submit-idea')}
                   className="font-semibold text-[#16587B] hover:underline cursor-pointer"
                 >
                   Sign Up
                 </button>
               </div>
 
-              {/* Subtle platform activity line */}
-              <div className="pt-6 border-t border-[#84B3CE]/30 flex items-center space-x-6 sm:space-x-10 text-xs text-[#16587B]/70">
-                <div>
-                  <span className="font-semibold text-sm text-[#5B0015] block">840+</span>
-                  <span>Ideas Evaluated</span>
+              {/* Platform Metrics with Vertical Dividers */}
+              <div className="w-full pt-8 border-t border-[#84B3CE]/20 flex flex-wrap sm:flex-nowrap items-center justify-between gap-4 sm:gap-0">
+                <div className="flex-1 pr-4 sm:pr-6 sm:border-r border-[#84B3CE]/20">
+                  <div className="text-lg sm:text-xl font-bold text-[#5B0015]">840+</div>
+                  <div className="text-[11px] sm:text-xs text-[#16587B]/70 mt-0.5">Ideas Evaluated</div>
                 </div>
-                <div className="h-6 w-px bg-[#84B3CE]/30"></div>
-                <div>
-                  <span className="font-semibold text-sm text-[#5B0015] block">160+</span>
-                  <span>Verified Investors</span>
+                <div className="flex-1 px-4 sm:px-6 sm:border-r border-[#84B3CE]/20">
+                  <div className="text-lg sm:text-xl font-bold text-[#5B0015]">160+</div>
+                  <div className="text-[11px] sm:text-xs text-[#16587B]/70 mt-0.5">Verified Investors</div>
                 </div>
-                <div className="h-6 w-px bg-[#84B3CE]/30"></div>
-                <div>
-                  <span className="font-semibold text-sm text-[#5B0015] block">380+</span>
-                  <span>Direct Chats Initiated</span>
+                <div className="flex-1 px-4 sm:px-6 sm:border-r border-[#84B3CE]/20">
+                  <div className="text-lg sm:text-xl font-bold text-[#5B0015]">380+</div>
+                  <div className="text-[11px] sm:text-xs text-[#16587B]/70 mt-0.5">Direct Chats Initiated</div>
                 </div>
-                <div className="h-6 w-px bg-[#84B3CE]/30 hidden sm:block"></div>
-                <div className="hidden sm:block">
-                  <span className="font-semibold text-sm text-[#5B0015] block">0%</span>
-                  <span>Platform Equity / Cut</span>
+                <div className="flex-1 pl-4 sm:pl-6">
+                  <div className="text-lg sm:text-xl font-bold text-[#5B0015]">0%</div>
+                  <div className="text-[11px] sm:text-xs text-[#16587B]/70 mt-0.5">Platform Equity / Cut</div>
                 </div>
               </div>
+
             </div>
 
-            {/* Right Column: Sophisticated Editorial Visual */}
-            <div className="lg:col-span-5">
-              <div className="p-6 sm:p-8 bg-[#16587B] text-[#fcfaf5] border border-[#84B3CE]/40 rounded-xl shadow-lg space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-[#84B3CE]/25 text-xs">
-                  <span className="text-[#84B3CE] font-mono tracking-wider uppercase text-[11px] font-bold">
-                    SYSTEM / ARCHITECTURE
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-[#fcfaf5] font-medium text-xs">
-                    <span className="w-2 h-2 rounded-full bg-[#84B3CE] animate-pulse"></span>
-                    Live Direct Mediator
+            {/* Right Column: System Architecture Card */}
+            <div className="lg:col-span-5 w-full">
+              <div className="bg-[#134B69] rounded-2xl p-6 sm:p-7 shadow-2xl border border-[#1B5678]">
+                
+                {/* Header bar */}
+                <div className="flex items-center justify-between text-xs font-mono text-[#79A7C3] tracking-wider mb-6 pb-4 border-b border-[#2C6A8D]/60">
+                  <span className="font-bold uppercase">SYSTEM / ARCHITECTURE</span>
+                  <span className="flex items-center gap-2 text-white font-medium">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#A3C4D8]"></span>
+                    <span>Live Direct Mediator</span>
                   </span>
                 </div>
 
-                {/* Node 1: Founder Pitch */}
-                <div className="p-3.5 border border-[#16587B]/20 rounded-lg bg-[#84B3CE] text-[#16587B] shadow-sm">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[11px] font-bold text-[#16587B]">01 · FOUNDER IDEA PITCH</span>
-                    <span className="text-[10px] text-[#16587B] font-semibold bg-[#fcfaf5]/40 px-1.5 py-0.5 rounded border border-[#16587B]/20">2/2 Files Attached</span>
+                {/* Workflow Cards */}
+                <div className="flex flex-col">
+                  
+                  {/* Step 01 */}
+                  <div className="bg-[#81B0CB] rounded-xl p-4 sm:p-4.5 text-[#0F3A52]">
+                    <div className="flex items-center justify-between text-[11px] font-mono mb-2">
+                      <span className="font-bold tracking-tight">01 · FOUNDER IDEA PITCH</span>
+                      <span className="px-2.5 py-0.5 rounded-md bg-[#D4E5F0] text-[#0F3A52] font-semibold text-[10px]">
+                        2/2 Files Attached
+                      </span>
+                    </div>
+                    <div className="text-sm font-bold text-[#0F3A52]">
+                      CleanGrid AI · Industrial IoT Energy Arbitrage
+                    </div>
+                    <div className="text-xs text-[#1D4F6A] font-medium mt-1">
+                      Pitch Deck (.pdf) &amp; Financial Model (.pptx) · Raising ₹45L Seed
+                    </div>
                   </div>
-                  <div className="text-xs font-bold text-[#16587B] mt-1">CleanGrid AI · Industrial IoT Energy Arbitrage</div>
-                  <div className="text-[11px] text-[#16587B]/80 mt-0.5 font-medium">Pitch Deck (.pdf) &amp; Financial Model (.pptx) · Raising ₹45L Seed</div>
+
+                  {/* Connecting Line 1 */}
+                  <div className="h-6 w-px bg-[#356F91] mx-auto my-1.5"></div>
+
+                  {/* Step 02 */}
+                  <div className="bg-[#81B0CB] rounded-xl p-4 sm:p-4.5 text-[#0F3A52]">
+                    <div className="flex items-center justify-between text-[11px] font-mono mb-2">
+                      <span className="font-bold tracking-tight">02 · HEADLINE &amp; THESIS QUOTE</span>
+                      <span className="px-2.5 py-0.5 rounded-md bg-[#5B0015] text-white font-semibold text-[10px]">
+                        Short Preview
+                      </span>
+                    </div>
+                    <div className="text-xs text-[#0F3A52] font-bold italic mt-1 leading-snug">
+                      &ldquo;AI battery arbitrage for industrial microgrids reducing peak tariffs 34%.&rdquo;
+                    </div>
+                    <div className="text-[11px] text-[#1D4F6A] font-medium mt-1">
+                      — &ldquo;Indian factories lose ₹28,000/day on peak power demand surcharges.&rdquo;
+                    </div>
+                  </div>
+
+                  {/* Connecting Line 2 */}
+                  <div className="h-6 w-px bg-[#356F91] mx-auto my-1.5"></div>
+
+                  {/* Step 03 */}
+                  <div className="bg-[#81B0CB] rounded-xl p-4 sm:p-4.5 text-[#0F3A52]">
+                    <div className="flex items-center justify-between text-[11px] font-mono mb-2">
+                      <span className="font-bold tracking-tight">03 · DIRECT BILATERAL CHAT</span>
+                      <span className="px-2.5 py-0.5 rounded-md bg-[#D4E5F0] text-[#0F3A52] font-semibold text-[10px]">
+                        1 of 5 Chats Used
+                      </span>
+                    </div>
+                    <div className="text-xs text-[#0F3A52] font-semibold mt-1 leading-snug">
+                      Rajiv Mehta clicked &ldquo;Let&apos;s Chat&rdquo; · Private bilateral encrypted channel open.
+                    </div>
+                  </div>
+
                 </div>
 
-                {/* Connecting Vector */}
-                <div className="flex justify-center my-0.5">
-                  <div className="w-px h-5 bg-[#84B3CE]/50"></div>
-                </div>
-
-                {/* Node 2: Headline & Thesis Quote */}
-                <div className="p-3.5 border border-[#16587B]/20 rounded-lg bg-[#84B3CE] text-[#16587B] shadow-sm">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[11px] font-bold text-[#16587B]">02 · HEADLINE &amp; THESIS QUOTE</span>
-                    <span className="text-[10px] text-[#fcfaf5] font-semibold bg-[#5B0015] px-1.5 py-0.5 rounded border border-[#5B0015]">Short Preview</span>
-                  </div>
-                  <p className="text-xs text-[#16587B] mt-1 font-semibold">
-                    &ldquo;AI battery arbitrage for industrial microgrids reducing peak tariffs 34%.&rdquo;
-                  </p>
-                  <p className="text-[11px] text-[#16587B]/85 italic mt-1">
-                    — &ldquo;Indian factories lose ₹28,000/day on peak power demand surcharges.&rdquo;
-                  </p>
-                </div>
-
-                {/* Connecting Vector */}
-                <div className="flex justify-center my-0.5">
-                  <div className="w-px h-5 bg-[#84B3CE]/50"></div>
-                </div>
-
-                {/* Node 3: Direct Bilateral Chat */}
-                <div className="p-3.5 border border-[#16587B]/20 rounded-lg bg-[#84B3CE] text-[#16587B] shadow-sm">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[11px] font-bold text-[#16587B]">03 · DIRECT BILATERAL CHAT</span>
-                    <span className="text-[10px] text-[#16587B] font-semibold bg-[#fcfaf5]/40 px-1.5 py-0.5 rounded border border-[#16587B]/20">1 of 5 Chats Used</span>
-                  </div>
-                  <div className="text-xs font-medium text-[#16587B] mt-1 leading-relaxed">
-                    Rajiv Mehta clicked &ldquo;Let&apos;s Chat&rdquo; · Private bilateral encrypted channel open.
-                  </div>
-                </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -234,47 +254,74 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Column 01: Ideas */}
-            <div className="p-6 border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all space-y-3">
-              <span className="text-xs font-mono text-[#5B0015] font-bold block">01</span>
-              <h3 className="text-base font-semibold text-[#16587B]">Ideas</h3>
-              <p className="text-xs text-[#16587B]/75 leading-relaxed">
-                2 active ideas free with 2 deck files each. Delete and swap ideas anytime without penalty. Need help building a deck? Our Venture Studio assists you.
-              </p>
-              <div className="pt-2">
-                <Link href="/ideas" className="inline-flex items-center gap-1 text-xs font-medium text-[#5B0015] hover:underline">
-                  <span>Browse Ideas</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+            <div className="overflow-hidden border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all group flex flex-col">
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80" 
+                  alt="Ideas" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col">
+                <span className="text-xs font-mono text-[#5B0015] font-bold block">01</span>
+                <h3 className="text-base font-semibold text-[#16587B]">Ideas</h3>
+                <p className="text-xs text-[#16587B]/75 leading-relaxed flex-1">
+                  2 active ideas free with 2 deck files each. Delete and swap ideas anytime without penalty. Need help building a deck? Our Venture Studio assists you.
+                </p>
+                <div className="pt-2 mt-auto">
+                  <Link href="/ideas" className="inline-flex items-center gap-1 text-xs font-medium text-[#5B0015] hover:underline">
+                    <span>Browse Ideas</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             </div>
 
             {/* Column 02: Investors */}
-            <div className="p-6 border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all space-y-3">
-              <span className="text-xs font-mono text-[#5B0015] font-bold block">02</span>
-              <h3 className="text-base font-semibold text-[#16587B]">Investors</h3>
-              <p className="text-xs text-[#16587B]/75 leading-relaxed">
-                Thorough 24h background check before login activation. Transparent monthly or yearly plans with 5 high-intent bilateral chats included.
-              </p>
-              <div className="pt-2">
-                <Link href="/investors" className="inline-flex items-center gap-1 text-xs font-medium text-[#5B0015] hover:underline">
-                  <span>Explore Investors</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+            <div className="overflow-hidden border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all group flex flex-col">
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80" 
+                  alt="Investors" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col">
+                <span className="text-xs font-mono text-[#5B0015] font-bold block">02</span>
+                <h3 className="text-base font-semibold text-[#16587B]">Investors</h3>
+                <p className="text-xs text-[#16587B]/75 leading-relaxed flex-1">
+                  Thorough 24h background check before login activation. Transparent monthly or yearly plans with 5 high-intent bilateral chats included.
+                </p>
+                <div className="pt-2 mt-auto">
+                  <Link href="/investors" className="inline-flex items-center gap-1 text-xs font-medium text-[#5B0015] hover:underline">
+                    <span>Explore Investors</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             </div>
 
             {/* Column 03: Opportunities */}
-            <div className="p-6 border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all space-y-3">
-              <span className="text-xs font-mono text-[#5B0015] font-bold block">03</span>
-              <h3 className="text-base font-semibold text-[#16587B]">Opportunities</h3>
-              <p className="text-xs text-[#16587B]/75 leading-relaxed">
-                Positions, partnerships, co-founder roles and syndicates. Connect directly with people who have complementary operational capabilities.
-              </p>
-              <div className="pt-2">
-                <Link href="/opportunities" className="inline-flex items-center gap-1 text-xs font-medium text-[#5B0015] hover:underline">
-                  <span>View Opportunities</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+            <div className="overflow-hidden border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all group flex flex-col">
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" 
+                  alt="Opportunities" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col">
+                <span className="text-xs font-mono text-[#5B0015] font-bold block">03</span>
+                <h3 className="text-base font-semibold text-[#16587B]">Opportunities</h3>
+                <p className="text-xs text-[#16587B]/75 leading-relaxed flex-1">
+                  Positions, partnerships, co-founder roles and syndicates. Connect directly with people who have complementary operational capabilities.
+                </p>
+                <div className="pt-2 mt-auto">
+                  <Link href="/opportunities" className="inline-flex items-center gap-1 text-xs font-medium text-[#5B0015] hover:underline">
+                    <span>View Opportunities</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -422,6 +469,13 @@ export default function HomePage() {
 
             {/* UI Mockup of Credits in Action */}
             <div className="lg:col-span-6">
+              <div className="relative rounded-xl overflow-hidden shadow-md mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Business Meeting" 
+                  className="w-full h-48 object-cover"
+                />
+              </div>
               <div className="p-6 border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] shadow-sm space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#84B3CE]/25">
                   <div>
@@ -689,6 +743,7 @@ export default function HomePage() {
                 investor: 'Aarohan Seed Syndicate',
                 industry: 'AgriTech & Cold Chain',
                 outcome: 'Connected on Ideasoch; secured 14 micro-pod deployments and institutional co-investment.',
+                img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80'
               },
               {
                 founder: 'Rahul Sharma',
@@ -696,6 +751,7 @@ export default function HomePage() {
                 investor: 'Mehta Ventures',
                 industry: 'CleanTech & Energy',
                 outcome: 'Matched through multi-investor application; currently finalizing terms for ₹45L seed syndicate.',
+                img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80'
               },
               {
                 founder: 'Dr. Ananya Sen',
@@ -703,33 +759,39 @@ export default function HomePage() {
                 investor: 'Kaveri Life Sciences Desk',
                 industry: 'Medical Devices & IVD',
                 outcome: 'Secured clinical advisory partnership and structured regulatory trial framework.',
+                img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80'
               },
             ].map((story, i) => (
               <div
                 key={i}
-                className="p-6 border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all space-y-3 flex flex-col justify-between"
+                className="overflow-hidden border border-[#84B3CE]/35 rounded-lg bg-[#f5f0e5] hover:border-[#16587B] transition-all group flex flex-col"
               >
-                <div>
-                  <span className="text-[11px] font-semibold text-[#5B0015] uppercase tracking-wide block">
-                    {story.industry}
-                  </span>
-                  <h3 className="text-base font-semibold text-[#16587B] mt-1 mb-2">
-                    {story.idea}
-                  </h3>
-                  <div className="text-xs text-[#16587B]/75 space-y-1 mb-3">
-                    <div>
-                      <span className="font-medium text-[#16587B]">Founder:</span> {story.founder}
-                    </div>
-                    <div>
-                      <span className="font-medium text-[#16587B]">Partner:</span> {story.investor}
-                    </div>
-                  </div>
-                  <p className="text-xs text-[#16587B]/75 leading-relaxed pt-3 border-t border-[#84B3CE]/25">
-                    &ldquo;{story.outcome}&rdquo;
-                  </p>
+                <div className="h-48 overflow-hidden relative">
+                  <img src={story.img} alt={story.founder} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div className="pt-2">
-                  <span className="text-[11px] text-[#16587B] font-medium">Verified Connection</span>
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-3">
+                  <div>
+                    <span className="text-[11px] font-semibold text-[#5B0015] uppercase tracking-wide block">
+                      {story.industry}
+                    </span>
+                    <h3 className="text-base font-semibold text-[#16587B] mt-1 mb-2">
+                      {story.idea}
+                    </h3>
+                    <div className="text-xs text-[#16587B]/75 space-y-1 mb-3">
+                      <div>
+                        <span className="font-medium text-[#16587B]">Founder:</span> {story.founder}
+                      </div>
+                      <div>
+                        <span className="font-medium text-[#16587B]">Partner:</span> {story.investor}
+                      </div>
+                    </div>
+                    <p className="text-xs text-[#16587B]/75 leading-relaxed pt-3 border-t border-[#84B3CE]/25">
+                      &ldquo;{story.outcome}&rdquo;
+                    </p>
+                  </div>
+                  <div className="pt-2">
+                    <span className="text-[11px] text-[#16587B] font-medium">Verified Connection</span>
+                  </div>
                 </div>
               </div>
             ))}

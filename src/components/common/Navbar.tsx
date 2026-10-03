@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
@@ -32,6 +32,18 @@ export const Navbar: React.FC = () => {
   } = useApp();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const isHome = pathname === '/';
+  const isTransparent = false;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { label: 'Discover', href: '/discover' },
@@ -49,16 +61,22 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-[#fcfaf5]/95 backdrop-blur-md border-b border-[#84B3CE]/30 transition-colors">
+      <header className={`top-0 z-50 w-full transition-all duration-300 ${
+        isHome ? 'fixed' : 'sticky'
+      } ${
+        isTransparent 
+          ? 'bg-transparent border-transparent shadow-none' 
+          : 'bg-[#fcfaf5]/95 backdrop-blur-md border-b border-[#84B3CE]/30'
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Brand Logo */}
             <div className="flex items-center gap-8">
               <Link href="/" className="flex items-center gap-1.5 group focus:outline-none">
-                <span className="font-semibold text-lg tracking-tight text-[#16587B]">
-                  IDEA<span className="font-light tracking-widest text-[#5B0015] ml-0.5">SOCH</span>
+                <span className={`font-semibold text-lg tracking-tight ${isTransparent ? 'text-white' : 'text-[#16587B]'}`}>
+                  IDEA<span className={`font-light tracking-widest ml-0.5 ${isTransparent ? 'text-white/80' : 'text-[#5B0015]'}`}>SOCH</span>
                 </span>
-                <span className="h-1.5 w-1.5 rounded-full bg-[#84B3CE] inline-block mb-1"></span>
+                <span className={`h-1.5 w-1.5 rounded-full inline-block mb-1 ${isTransparent ? 'bg-white' : 'bg-[#84B3CE]'}`}></span>
               </Link>
 
               {/* Desktop Nav Links */}
@@ -71,8 +89,8 @@ export const Navbar: React.FC = () => {
                       href={link.href}
                       className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
                         isActive
-                          ? 'text-[#16587B] bg-[#84B3CE]/20 font-semibold'
-                          : 'text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15'
+                          ? (isTransparent ? 'text-white bg-white/20 font-semibold' : 'text-[#16587B] bg-[#84B3CE]/20 font-semibold')
+                          : (isTransparent ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15')
                       }`}
                     >
                       {link.label}
@@ -88,13 +106,21 @@ export const Navbar: React.FC = () => {
               <div className="hidden sm:flex items-center space-x-2">
                 <Link
                   href="/login"
-                  className="px-3 py-1.5 text-xs font-semibold text-[#16587B] border border-[#16587B]/30 rounded-md bg-[#f5f0e5] hover:bg-[#ede6d8] transition-colors"
+                  className={`px-3 py-1.5 text-xs font-semibold border rounded-md transition-colors ${
+                    isTransparent
+                      ? 'text-white border-white/40 bg-white/10 hover:bg-white/20'
+                      : 'text-[#16587B] border-[#16587B]/30 bg-[#f5f0e5] hover:bg-[#ede6d8]'
+                  }`}
                 >
                   Log In
                 </Link>
                 <Link
                   href="/register"
-                  className="px-3 py-1.5 text-xs font-semibold text-[#fcfaf5] bg-[#16587B] rounded-md hover:bg-[#124864] transition-colors shadow-xs"
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors shadow-xs ${
+                    isTransparent
+                      ? 'text-[#16587B] bg-white hover:bg-gray-100'
+                      : 'text-[#fcfaf5] bg-[#16587B] hover:bg-[#124864]'
+                  }`}
                 >
                   Sign Up
                 </Link>
@@ -103,7 +129,11 @@ export const Navbar: React.FC = () => {
               {/* Messages Shortcut */}
               <Link
                 href="/messages"
-                className="p-2 text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15 rounded-md transition-colors relative"
+                className={`p-2 rounded-md transition-colors relative ${
+                  isTransparent
+                    ? 'text-white/80 hover:text-white hover:bg-white/10'
+                    : 'text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15'
+                }`}
                 title="Messages"
               >
                 <MessageSquare className="w-4 h-4" />
@@ -112,7 +142,11 @@ export const Navbar: React.FC = () => {
               {/* Notifications */}
               <Link
                 href="/notifications"
-                className="p-2 text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15 rounded-md transition-colors relative"
+                className={`p-2 rounded-md transition-colors relative ${
+                  isTransparent
+                    ? 'text-white/80 hover:text-white hover:bg-white/10'
+                    : 'text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15'
+                }`}
                 title="Notifications"
               >
                 <Bell className="w-4 h-4" />
@@ -124,7 +158,11 @@ export const Navbar: React.FC = () => {
               {/* Dashboard / Profile */}
               <Link
                 href={getDashboardHref()}
-                className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-[#16587B] border border-[#16587B]/30 rounded-md bg-[#f5f0e5] hover:bg-[#ede6d8] transition-colors"
+                className={`hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium border rounded-md transition-colors ${
+                  isTransparent
+                    ? 'text-white border-white/40 bg-white/10 hover:bg-white/20'
+                    : 'text-[#16587B] border-[#16587B]/30 bg-[#f5f0e5] hover:bg-[#ede6d8]'
+                }`}
               >
                 <span>Dashboard</span>
               </Link>
@@ -132,7 +170,11 @@ export const Navbar: React.FC = () => {
               {/* Primary Action Button */}
               <Link
                 href="/submit-idea"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-sm font-medium bg-[#5B0015] text-[#fcfaf5] rounded-md hover:bg-[#43000f] transition-colors shadow-sm border border-[#5B0015]"
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 text-sm font-medium rounded-md transition-colors shadow-sm border ${
+                  isTransparent
+                    ? 'bg-white text-[#16587B] border-transparent hover:bg-gray-100'
+                    : 'bg-[#5B0015] text-[#fcfaf5] border-[#5B0015] hover:bg-[#43000f]'
+                }`}
               >
                 <PlusCircle className="w-4 h-4" />
                 <span>Submit Idea</span>
@@ -142,7 +184,11 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15 rounded-md"
+                className={`md:hidden p-2 rounded-md ${
+                  isTransparent
+                    ? 'text-white/80 hover:text-white hover:bg-white/10'
+                    : 'text-[#16587B]/75 hover:text-[#16587B] hover:bg-[#84B3CE]/15'
+                }`}
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>

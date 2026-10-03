@@ -19,6 +19,17 @@ interface IdeaCardProps {
   idea: Idea;
 }
 
+const CATEGORY_IMAGES: Record<string, string> = {
+  'Healthcare & Life Sciences': 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=400&q=80',
+  'CleanTech & Energy': 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=400&q=80',
+  'FinTech & Capital': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80',
+  'AgriTech & Food': 'https://images.unsplash.com/photo-1592982537447-6f23f5b0eb68?auto=format&fit=crop&w=400&q=80',
+  'B2B SaaS & AI': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80',
+  'Logistics & Supply Chain': 'https://images.unsplash.com/photo-1586528116311-ad8ed7c81d86?auto=format&fit=crop&w=400&q=80',
+  'EdTech & Learning': 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80',
+  'Consumer & D2C': 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=400&q=80',
+};
+
 export const IdeaCard: React.FC<IdeaCardProps> = ({ idea }) => {
   const { isIdeaSaved, toggleSaveIdea, investorProfile } = useApp();
   const [chatModalOpen, setChatModalOpen] = useState(false);
@@ -32,8 +43,16 @@ export const IdeaCard: React.FC<IdeaCardProps> = ({ idea }) => {
 
   return (
     <>
-      <div className="group bg-[#f5f0e5] border border-[#84B3CE]/40 rounded-xl p-5 flex flex-col justify-between hover:border-[#16587B] hover:shadow-md transition-all duration-200">
-        <div>
+      <div className="group bg-[#f5f0e5] border border-[#84B3CE]/40 rounded-xl overflow-hidden flex flex-col justify-between hover:border-[#16587B] hover:shadow-md transition-all duration-200">
+        <div className="h-32 overflow-hidden relative">
+          <img 
+            src={CATEGORY_IMAGES[idea.category] || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80'} 
+            alt={idea.category}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <div className="p-5 flex-1 flex flex-col justify-between">
+          <div>
           {/* Category & Status Bar */}
           <div className="flex items-center justify-between mb-3">
             <span className="text-[11px] font-mono font-semibold tracking-wide uppercase text-[#5B0015] bg-[#5B0015]/8 px-2 py-0.5 rounded">
@@ -138,6 +157,7 @@ export const IdeaCard: React.FC<IdeaCardProps> = ({ idea }) => {
             <MessageSquare className="w-3.5 h-3.5" />
             {isChatActive ? "Resume Chat" : "Let's Chat"}
           </button>
+        </div>
         </div>
       </div>
 

@@ -9,16 +9,24 @@ interface InvestorCardProps {
 
 export const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => {
   return (
-    <div className="bg-[#f5f0e5] border border-[#84B3CE]/35 rounded-lg p-5 flex flex-col justify-between hover:border-[#16587B] hover:shadow-sm transition-all duration-150">
-      <div>
-        {/* Header with Avatar, Name, Location */}
-        <div className="flex items-start gap-3.5 mb-3.5">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={investor.avatar}
-            alt={investor.name}
-            className="w-12 h-12 rounded-full object-cover border border-[#84B3CE]/40 shrink-0"
-          />
+    <div className="group bg-[#f5f0e5] border border-[#84B3CE]/35 rounded-lg overflow-hidden flex flex-col justify-between hover:border-[#16587B] hover:shadow-sm transition-all duration-150">
+      <div className="h-16 bg-[#16587B] relative">
+        <img 
+          src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=400&q=80" 
+          alt="Banner" 
+          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+      <div className="p-5 pt-0 flex-1 flex flex-col justify-between">
+        <div>
+          {/* Header with Avatar, Name, Location */}
+          <div className="flex items-start gap-3.5 mb-3.5 -mt-6 relative z-10">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={investor.avatar}
+              alt={investor.name}
+              className="w-14 h-14 rounded-full object-cover border-2 border-[#f5f0e5] shadow-sm shrink-0 bg-[#f5f0e5]"
+            />
           <div>
             <div className="flex items-center gap-1">
               <h3 className="text-sm font-semibold text-[#16587B] tracking-tight">
@@ -88,6 +96,7 @@ export const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => {
           <span>View Profile</span>
           <ArrowRight className="w-3 h-3" />
         </Link>
+      </div>
       </div>
     </div>
   );
